@@ -1,0 +1,508 @@
+@font-face {
+    font-family: Knewave;
+    src: url('fonts/TrashHand.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: OpenSans;
+    src: url('fonts/OpenSans-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: Material Icons;
+    src: url('fonts/MaterialIcons-Regular.ttf') format('truetype');
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    margin:0;
+    padding:0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../tahdet2.png);
+}
+
+/* ---------- HEADER ---------- */
+
+h1 {
+    display: inline-flex;
+    font-size: 9vw;
+    margin:5vw;
+    margin-left:0;
+    font-family: 'Knewave';
+    letter-spacing: 4px;
+    font-weight: 300;
+
+}
+
+
+header {
+    position:fixed;
+    z-index: 1000000;
+    top: 0;
+    width: 100%;
+    margin:auto;
+    display: block;
+    white-space:nowrap;
+    background-color: #28ceff;
+    text-align: center;
+}
+
+.toggle-button {
+    margin:0;
+    margin-left:2vw;
+    margin-top:2vw;
+    display: inline-block;
+    border: none;
+    background-color: transparent;
+    font-size:8vw;
+    outline:none;
+    float:left;
+}
+
+.toggle-button:active {
+    outline:none;
+    color:black;
+}
+
+.toggle-button::visited {
+    outline:none;
+}
+
+#wrap {
+   position: absolute;
+   top:20vw;
+   width:100%;
+}
+
+#peppu {
+    box-shadow: 0px 0px 0px 0px #537a88;
+    margin-top: 20px;
+    padding-bottom: 5px;
+    background: #28ceff;
+    border: solid 0.3px black;
+    color: black;
+}
+
+.content {
+    position: relative;
+    top: 30vw;
+    background-color:white;
+    width: 70%;
+    margin:auto;
+    padding:5vw;
+    border:1px solid black;
+    margin-bottom: 50vw;
+}
+
+/* ------- TULOKSET ------- */
+
+
+#results {
+    display:none;
+    position:relative;
+    width:100%;
+    margin:auto;
+    font-size: 5vw;
+    text-align: center;
+    white-space: nowrap;
+}
+
+#results img {
+    width:5vw;
+    float: right;
+    padding-right:2vw;
+}
+
+#results a {
+    text-decoration: none;
+}
+
+#results h3 {
+    text-decoration: none;
+    color:white;
+    font-size: 5vw;
+    text-align: center;
+    margin:1vw;
+    display: block;
+
+}
+
+#backbutton, #backbutton i {
+    position:fixed;
+    left:0px;
+    bottom:10vw;
+    margin:3vw;
+    color:red;
+    font-size: 10vw;
+    font-weight: 400;
+}
+
+#refreshbutton, #refreshbutton i {
+    position:fixed;
+    right:0px;
+    bottom:10vw;
+    margin:3vw;
+    color:green;
+    font-size: 10vw;
+    font-weight: 400;
+}
+
+.modal {
+    font-size: 5vw;
+}
+
+
+table {
+    width:100%;
+}
+
+td.teksti {
+    width:90%;
+}
+
+.symboli {
+    text-align: center;
+    margin:0;
+    color:steelblue;
+}
+
+.modal .symboli {
+    display: none;
+}
+
+td.image {
+    width:10%;
+}
+
+.tulos {
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    margin:3vw;
+    margin-bottom:6vw;
+    padding:5vw;
+}
+
+/* ---------- MENU-SKRIPTI PANEELI ---------- */
+
+#panel {
+    height:100%;
+    width:100%;
+    background-image: url(../tahdet2.png);
+}
+
+
+.panel:before {
+  content: '';
+  display: block;
+  background-color: rgba(0,0,0,0);
+  transition: background-color 0.5s ease-in-out;
+}
+
+.panel-open:before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0,0,0,.5);
+  z-index: 99;
+}
+
+.slideout-menu {
+    background-color: #127eaa;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 0;
+    width: 256px;
+    -webkit-overflow-scrolling: touch;
+    display: none;
+
+}
+
+.slideout-panel {
+    position: relative;
+    z-index: 1;
+    will-change: transform;
+}
+
+.slideout-open,
+.slideout-open body,
+.slideout-open .slideout-panel {
+    overflow: hidden;
+}
+
+.slideout-open .slideout-menu {
+    display: block;
+}
+
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-size: 4.3vw;
+    padding-left:1vw;
+    padding-right:1vw;
+}
+
+.menu li {
+    display: block;
+    height:15vw;
+    width:100%;
+    padding-top:7.5vw;
+    padding-left:2vw;
+    border-bottom: 1px solid #91e4fb;
+}
+
+.menu li a {
+    text-decoration: none;
+    color:white;
+    width:100%;
+    height:15vw;
+}
+
+/*Materialicons set*/
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 6vw;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  vertical-align: middle;
+  color: steelblue;
+  margin-left:2vw;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+/* Rules for sizing the icon. */
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+.fb-like {
+    background-color: #3B5998;
+    color: white;
+    text-decoration: none;
+    width: 60%;
+    min-width: 180px;
+    padding:auto;
+    margin:auto;
+    text-decoration: none;
+    margin:auto;
+    outline:none;
+}
+
+.fb-like p {
+    text-decoration: none;
+    outline:none;
+}
+
+p.symbol {
+    line-height: 1;
+    vertical-align: middle;
+}
+
+/* IKÄ JA MÄÄRÄ VALINNAT */
+
+#valinnat {
+    padding-top:5vw;
+}
+
+#valinnat h3 {
+    text-align: center;
+     font-size: 6vw;
+     margin:2vw;
+     margin-bottom:5vw;
+ }
+
+#valinnat input {
+    display: none;
+}
+
+#valinnat p {
+    margin:0;
+    font-size:5.5vw;
+    font-weight: 300;
+    color:white;
+}
+
+#valinnat label  {
+    display: block;
+    width: 100%;
+    height:9vw;
+    margin-bottom:4vw;
+    padding-top:4vw;
+    text-align: center;
+}
+
+input[type=radio] + label {
+    display:inline-flex;
+    padding-top: 2vw;
+    padding-bottom: 2vw;
+}
+
+input[type=radio]:checked + label { 
+   border-top: 2px solid rgba(0,0,0,.6);
+   border-bottom: 2px solid rgba(0,0,0,.6);
+    padding-top: 0vw;
+}
+
+#countq {
+    display: none;
+}
+
+.red {
+    background-color: #EF476F;
+}
+
+.green {
+    background-color:#06C995;
+}
+
+.purple {
+    background-color:#FFB349;
+}
+
+.blue {
+    background-color: #2892D7;
+}
+
+/* ---------- HAE LEIKKI - NAPPI ---------- */
+
+#button {
+    text-align: center;
+}
+
+#leiki {
+     margin-top: 3vw;
+    width:30vw;
+    height:30vw;
+	border:0.5px solid black;
+    border-radius: 50%;
+    font-family: 'Knewave';
+    font-size: 8.5vw;
+    outline:none;
+    background-color: #28ceff;
+    color:black;
+    box-shadow: 0px 5px 0px 0px #537a88;
+
+}
+
+.noflex {
+    display: inline-flex;
+    margin:2vw;
+    padding: 2vw;
+    background-color: rgb(191,204,245);
+    border-color: #ddd;
+    border-radius: 15px;
+}
+
+p.noflex {
+    font-size: 5vw;
+}
+
+.back {
+    font-size: 4.5vw;
+    margin:auto;
+    display: block;
+    border:none;
+    padding:3vw;
+    background-color: #91e4fb;
+    border: 1px solid black;
+    border-radius: 15px;
+    font-family: OpenSans;
+    margin-bottom:5vw;
+    margin-top:2vw;
+}
+
+#space {
+    height:10vw;
+}
+
+.haloo {
+    text-shadow: 4px 4px 9px rgba(255, 50, 0, 1);
+
+}
+
+/* ----- LOADER ----- */
+
+#loading {
+    width:60%;
+    background-color: #84E2FF;
+    display: none;
+    text-align: center;
+    margin:auto;
+    padding:3vw;
+    margin-top:10vw;
+    border-radius: 15px;
+    color:black;
+
+}
+
+.loader,
+.loader:after {
+  border-radius: 50%;
+  width: 10em;
+  height: 10em;
+}
+.loader {
+  margin: 60px auto;
+  font-size: 10px;
+  position: relative;
+  text-indent: -9999em;
+  border-top: 1.1em solid rgba(255, 255, 255, 0.2);
+  border-right: 1.1em solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
+  border-left: 1.1em solid #ffffff;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation: load8 1.1s infinite linear;
+  animation: load8 1.1s infinite linear;
+}
+@-webkit-keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+

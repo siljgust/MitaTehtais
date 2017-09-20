@@ -1,0 +1,78 @@
+<!DOCTYPE html5>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title> Mitä tehtäis? </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, target-densitydpi=medium-dpi, user-scalable=0"
+  />
+  <script src="js/jquery-1.12.4.min.js"></script>
+  <script src="js/jquery.modal.min.js"></script>
+  <script src="js/slideout.min.js"></script>
+  <script src="js/script.js"></script>
+  <link rel="stylesheet" href="css/jquery.modal.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+  <nav id="meny" class="menu">
+    <section class="menu-section">
+      <ul class="menu-section-list">
+        <li><a href="index.html">Takaisin leikkimään! →</a></li>
+        <li><a href="jaa.html">Jaa</a></li>
+        <li><a href="tietoja.html">Tietoa sovelluksesta</a></li>
+        <li><a href="mailto:mtehtais@gmail.com?subject=Palautetta Mitä tehtäis? -sovelluksesta&body=Hei! Haluaisin antaa palautetta sovelluksesta.">Anna palautetta</a></li>
+      </ul>
+    </section>
+  </nav>
+
+  <div id="panel">
+    <header>
+      <button class="toggle-button">☰</button>
+      <h1>Mitä tehtäis?</h1>
+    </header>
+
+    <div class="content">
+      <h3>Tietoa sovelluksesta</h3>
+      <p>Mitä tehtäis? -sovellus on tarkoitettu uusien leikkien ja erilaisen tekemisen löytämiseksi! Leikkejä voi leikkiä monen
+        ikäiset lapset, yhdessä vanhempien kanssa tai erikseen.</p>
+      <h4>Oma leikki sovellukseen?</h4>
+      <p>Tahtoisitko lisätä oman leikkisi sovellukseen? Kerro leikistä meille lähettämällä palautetta valikon "Anna palautetta"
+        -linkin kautta, niin saatamme lisätä sen!</p>
+    </div>
+
+  </div>
+  <script>
+    var slideout = new Slideout({
+      'panel': document.getElementById('panel'),
+      'menu': document.getElementById('meny'),
+      'padding': 256,
+      'tolerance': 70
+    });
+
+    // Toggle button
+    document.querySelector('.toggle-button').addEventListener('click', function () {
+      slideout.toggle();
+    });
+
+    function close(eve) {
+      eve.preventDefault();
+      slideout.close();
+    }
+
+    slideout
+      .on('beforeopen', function () {
+        this.panel.classList.add('panel-open');
+      })
+      .on('open', function () {
+        this.panel.addEventListener('click', close);
+      })
+      .on('beforeclose', function () {
+        this.panel.classList.remove('panel-open');
+        this.panel.removeEventListener('click', close);
+      });
+  </script>
+</body>
+
+</html>

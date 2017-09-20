@@ -1,0 +1,132 @@
+<!DOCTYPE html5>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title> Mitä tehtäis? </title>
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=medium-dpi"
+  />
+  <script src="js/jquery-1.12.4.min.js"></script>
+  <script src="js/jquery.modal.min.js"></script>
+  <script src="js/slideout.min.js"></script>
+  <script src="js/script_uusi.js"></script>
+  <link rel="stylesheet" href="css/jquery.modal.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+
+
+</head>
+
+<body>
+  <nav id="meny" class="menu">
+    <section class="menu-section">
+      <ul class="menu-section-list">
+        <li><a href="index.html">Takaisin leikkimään! →</a></li>
+        <li><a href="jaa.html">Jaa</a></li>
+        <li><a href="tietoja.html">Tietoa sovelluksesta</a></li>
+        <li><a href="mailto:mtehtais@gmail.com?subject=Palautetta Mitä tehtäis? -sovelluksesta&body=Hei! Haluaisin antaa palautetta sovelluksesta.">Anna palautetta</a></li>
+      </ul>
+    </section>
+  </nav>
+  <div id="panel">
+    <header>
+      <button class="toggle-button">☰</button>
+      <h1>Mitä tehtäis?</h1>
+    </header>
+
+    <div id="wrap">
+      <div id="valinnat">
+
+        <form id="agecount">
+
+          <div id="ageq">
+
+            <h3>Valitse leikkijöiden ikä</h3>
+            <input type="radio" name="age" id="13" value="1-3" required/><label for="13" class="red"><p>1 - 3 vuotta </p> </label>
+            <input type="radio" name="age" id="36" value="3-6" /><label for="36" class="green"><p>3 - 6 vuotta</p> </label>
+            <input type="radio" name="age" id="6" value="6" /><label for="6" class="purple"><p>Yli 6 vuotta</p> </label>
+            <input type="radio" name="age" id="diff" value="131" /><label for="diff" class="blue"><p>Eri-ikäisiä leikkijöitä</p> </label>
+          </div>
+
+          <div id="countq">
+            <h3>Valitse leikkijöiden määrä</h3>
+            <input type="radio" name="count" id="1" value="1" required /><label for="1" class="purple" onclick="afterChoosing()"><p>1 leikkijä</p> </label>
+            <input type="radio" name="count" id="2" value="2" /><label for="2" class="red" onclick="afterChoosing()"><p>2 leikkijää</p> </label>
+            <input type="radio" name="count" id="3" value="3" /><label for="3" class="green" onclick="afterChoosing()"><p>Yli 2 leikkijää</p> </label>
+
+        </form>
+
+
+        <div id="backbutton" onclick="goback()">
+          <i class='material-icons'>arrow_back</i>
+        </div>
+
+        </div>
+
+
+      </div>
+
+      <div id="loading">
+
+        <h2>Ladataan leikkejä...</h2>
+
+        <div class="loader">Loading...</div>
+
+      </div>
+
+
+
+      <div id="results">
+
+        <div id="tulokset">
+        </div>
+
+          <div id="ohjausbutton">
+            <div id="backbutton" onclick="goback()">
+              <i class='material-icons'>arrow_back</i>
+            </div>
+
+            <div id="refreshbutton" onclick="newSearch(event)">
+              <i class='material-icons'>refresh</i>
+            </div>
+
+          </div>
+
+
+
+
+      </div>
+    </div>
+    <script>
+      var slideout = new Slideout({
+        'panel': document.getElementById('panel'),
+        'menu': document.getElementById('meny'),
+        'padding': 256,
+        'tolerance': 70
+      });
+
+      // Toggle button
+      document.querySelector('.toggle-button').addEventListener('click', function () {
+        slideout.toggle();
+      });
+
+      function close(eve) {
+        eve.preventDefault();
+        slideout.close();
+      }
+
+      slideout
+        .on('beforeopen', function () {
+          this.panel.classList.add('panel-open');
+        })
+        .on('open', function () {
+          this.panel.addEventListener('click', close);
+        })
+        .on('beforeclose', function () {
+          this.panel.classList.remove('panel-open');
+          this.panel.removeEventListener('click', close);
+        });
+    </script>
+</body>
+
+</html>
